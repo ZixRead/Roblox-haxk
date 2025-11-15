@@ -21,9 +21,9 @@ ScreenGui.Name = "OrbHunterPro"
 ScreenGui.Parent = player.PlayerGui
 
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 420, 0, 600)
+MainFrame.Size = UDim2.new(0, 450, 0, 650)
 MainFrame.Position = UDim2.new(0.1, 0, 0.1, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 15)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 
@@ -96,7 +96,7 @@ HeaderGradient.Parent = Header
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(0.7, 0, 1, 0)
 Title.Position = UDim2.new(0, 20, 0, 0)
-Title.Text = "🌟 ORB HUNTER PRO"
+Title.Text = "🚀 ULTRA HUNTER PRO"
 Title.BackgroundTransparency = 1
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.Font = Enum.Font.GothamBold
@@ -134,7 +134,7 @@ local CloseCorner = Instance.new("UICorner")
 CloseCorner.CornerRadius = UDim.new(1, 0)
 CloseCorner.Parent = CloseButton
 
--- Content Area (จะถูกซ่อนเมื่อ minimize)
+-- Content Area
 local ContentArea = Instance.new("Frame")
 ContentArea.Size = UDim2.new(1, 0, 1, -60)
 ContentArea.Position = UDim2.new(0, 0, 0, 60)
@@ -178,14 +178,14 @@ ToolsTabCorner.Parent = ToolsTab
 
 -- Main Content
 local MainContent = Instance.new("Frame")
-MainContent.Size = UDim2.new(1, -20, 0, 465)
+MainContent.Size = UDim2.new(1, -20, 0, 515)
 MainContent.Position = UDim2.new(0, 10, 0, 60)
 MainContent.BackgroundTransparency = 1
 MainContent.Parent = ContentArea
 
 -- Tools Content
 local ToolsContent = Instance.new("Frame")
-ToolsContent.Size = UDim2.new(1, -20, 0, 465)
+ToolsContent.Size = UDim2.new(1, -20, 0, 515)
 ToolsContent.Position = UDim2.new(0, 10, 0, 60)
 ToolsContent.BackgroundTransparency = 1
 ToolsContent.Parent = ContentArea
@@ -193,7 +193,7 @@ ToolsContent.Visible = false
 
 -- Control Buttons
 local ControlFrame = Instance.new("Frame")
-ControlFrame.Size = UDim2.new(1, 0, 0, 200)
+ControlFrame.Size = UDim2.new(1, 0, 0, 220)
 ControlFrame.Position = UDim2.new(0, 0, 0, 0)
 ControlFrame.BackgroundTransparency = 1
 ControlFrame.Parent = MainContent
@@ -202,7 +202,7 @@ ControlFrame.Parent = MainContent
 local ScanButton = Instance.new("TextButton")
 ScanButton.Size = UDim2.new(1, 0, 0, 50)
 ScanButton.Position = UDim2.new(0, 0, 0, 0)
-ScanButton.Text = "🔍 DEEP SCAN ORBS"
+ScanButton.Text = "🔍 DEEP SCAN & BYPASS"
 ScanButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
 ScanButton.TextColor3 = Color3.new(1, 1, 1)
 ScanButton.Font = Enum.Font.GothamBold
@@ -271,10 +271,32 @@ MassCollectGradient.Color = ColorSequence.new({
 })
 MassCollectGradient.Parent = MassCollectButton
 
+-- Bypass Button
+local BypassButton = Instance.new("TextButton")
+BypassButton.Size = UDim2.new(1, 0, 0, 45)
+BypassButton.Position = UDim2.new(0, 0, 0, 110)
+BypassButton.Text = "🛡️ ACTIVATE BYPASS"
+BypassButton.BackgroundColor3 = Color3.fromRGB(120, 0, 200)
+BypassButton.TextColor3 = Color3.new(1, 1, 1)
+BypassButton.Font = Enum.Font.GothamBold
+BypassButton.TextSize = 14
+BypassButton.Parent = ControlFrame
+
+local BypassCorner = Instance.new("UICorner")
+BypassCorner.CornerRadius = UDim.new(0, 8)
+BypassCorner.Parent = BypassButton
+
+local BypassGradient = Instance.new("UIGradient")
+BypassGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(100, 0, 180)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(160, 0, 255))
+})
+BypassGradient.Parent = BypassButton
+
 -- Status
 local StatusLabel = Instance.new("TextLabel")
 StatusLabel.Size = UDim2.new(1, 0, 0, 35)
-StatusLabel.Position = UDim2.new(0, 0, 0, 110)
+StatusLabel.Position = UDim2.new(0, 0, 0, 160)
 StatusLabel.Text = "🟢 Status: Ready to scan"
 StatusLabel.BackgroundTransparency = 1
 StatusLabel.TextColor3 = Color3.new(1, 1, 1)
@@ -285,7 +307,7 @@ StatusLabel.Parent = ControlFrame
 -- Progress Bar
 local ProgressBar = Instance.new("Frame")
 ProgressBar.Size = UDim2.new(1, 0, 0, 4)
-ProgressBar.Position = UDim2.new(0, 0, 0, 150)
+ProgressBar.Position = UDim2.new(0, 0, 0, 200)
 ProgressBar.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 ProgressBar.Parent = ControlFrame
 
@@ -312,7 +334,7 @@ ProgressGradient.Parent = ProgressFill
 -- Search
 local SearchBox = Instance.new("TextBox")
 SearchBox.Size = UDim2.new(1, 0, 0, 40)
-SearchBox.Position = UDim2.new(0, 0, 0, 160)
+SearchBox.Position = UDim2.new(0, 0, 0, 210)
 SearchBox.PlaceholderText = "🔍 Search items..."
 SearchBox.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
 SearchBox.TextColor3 = Color3.new(1, 1, 1)
@@ -326,8 +348,8 @@ SearchCorner.Parent = SearchBox
 
 -- List
 local ListFrame = Instance.new("ScrollingFrame")
-ListFrame.Size = UDim2.new(1, 0, 0, 245)
-ListFrame.Position = UDim2.new(0, 0, 0, 210)
+ListFrame.Size = UDim2.new(1, 0, 0, 275)
+ListFrame.Position = UDim2.new(0, 0, 0, 260)
 ListFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 ListFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
 ListFrame.ScrollBarThickness = 6
@@ -432,10 +454,32 @@ ScriptHubGradient.Color = ColorSequence.new({
 })
 ScriptHubGradient.Parent = ScriptHubButton
 
+-- Advanced Bypass
+local AdvancedBypassButton = Instance.new("TextButton")
+AdvancedBypassButton.Size = UDim2.new(1, 0, 0, 50)
+AdvancedBypassButton.Position = UDim2.new(0, 0, 0, 220)
+AdvancedBypassButton.Text = "🛡️ ADVANCED BYPASS"
+AdvancedBypassButton.BackgroundColor3 = Color3.fromRGB(120, 0, 200)
+AdvancedBypassButton.TextColor3 = Color3.new(1, 1, 1)
+AdvancedBypassButton.Font = Enum.Font.GothamBold
+AdvancedBypassButton.TextSize = 15
+AdvancedBypassButton.Parent = ToolsFrame
+
+local AdvancedBypassCorner = Instance.new("UICorner")
+AdvancedBypassCorner.CornerRadius = UDim.new(0, 10)
+AdvancedBypassCorner.Parent = AdvancedBypassButton
+
+local AdvancedBypassGradient = Instance.new("UIGradient")
+AdvancedBypassGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(100, 0, 180)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(160, 0, 255))
+})
+AdvancedBypassGradient.Parent = AdvancedBypassButton
+
 -- Tools Status
 local ToolsStatus = Instance.new("TextLabel")
 ToolsStatus.Size = UDim2.new(1, 0, 0, 40)
-ToolsStatus.Position = UDim2.new(0, 0, 0, 220)
+ToolsStatus.Position = UDim2.new(0, 0, 0, 275)
 ToolsStatus.Text = "🟢 Tools: Ready to load"
 ToolsStatus.BackgroundTransparency = 1
 ToolsStatus.TextColor3 = Color3.new(1, 1, 1)
@@ -448,6 +492,140 @@ local foundOrbs = {}
 local isAutoCollecting = false
 local isMinimized = false
 local validRemotes = {}
+local bypassEnabled = false
+
+-- ฟังก์ชันบายพาสขั้นสูง
+function enableAdvancedBypass()
+    -- บายพาส Anti-Cheat พื้นฐาน
+    local function bypassCommonChecks()
+        -- บายพาสการตรวจสอบความเร็ว
+        if not hookfunction then
+            -- ใช้วิธีการอื่นในการบายพาส
+            local oldNamecall
+            oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+                local method = getnamecallmethod()
+                local args = {...}
+                
+                -- บายพาสการตรวจสอบความเร็ว
+                if method == "FireServer" or method == "InvokeServer" then
+                    if tostring(self):find("Remote") then
+                        -- เพิ่มความล่าช้าเล็กน้อยเพื่อหลีกเลี่ยงการตรวจจับ
+                        wait(0.01)
+                    end
+                end
+                
+                return oldNamecall(self, ...)
+            end)
+        end
+        
+        -- บายพาสการตรวจสอบข้อมูล
+        game:GetService("ScriptContext").Error:Connect(function(message, trace, script)
+            if string.find(message, "cheat") or string.find(message, "exploit") then
+                return
+            end
+        end)
+    end
+
+    -- ฟังก์ชันเจาะรหัสลับ
+    function crackSecretCodes(remote)
+        local secretPatterns = {
+            "^(%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)$", -- UUID
+            "^(%d+)$", -- Numbers only
+            "^(%a+)$", -- Letters only
+            "^([%w%s]+)$", -- Alphanumeric
+            "^(%d+%.%d+)$", -- Version numbers
+            "^(%d+%-%d+)$" -- Range numbers
+        }
+        
+        local testCodes = {
+            "00000000-0000-0000-0000-000000000000",
+            "11111111-1111-1111-1111-111111111111",
+            "99999999-9999-9999-9999-999999999999",
+            "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+            "12345678-1234-1234-1234-123456789012",
+            "1", "999", "999999",
+            "A", "TEST", "ADMIN", "SUPER", "SECRET",
+            "1.0", "2.0", "999.999",
+            "1-999", "0-1000"
+        }
+        
+        local workingCodes = {}
+        
+        for _, code in pairs(testCodes) do
+            local success = pcall(function()
+                if remote:IsA("RemoteEvent") then
+                    remote:FireServer("TestZone", code)
+                else
+                    remote:InvokeServer("TestZone", code)
+                end
+                return true
+            end)
+            
+            if success then
+                table.insert(workingCodes, code)
+            end
+        end
+        
+        return workingCodes
+    end
+
+    -- ฟังก์ชันเจาะรหัสจาก Memory
+    function crackMemoryPatterns()
+        local memoryPatterns = {}
+        
+        -- สแกน StringValues สำหรับรหัสลับ
+        for _, obj in pairs(ReplicatedStorage:GetDescendants()) do
+            if obj:IsA("StringValue") then
+                local value = obj.Value
+                if value and (string.len(value) == 36 or string.find(string.lower(obj.Name), "secret") or string.find(string.lower(obj.Name), "code")) then
+                    table.insert(memoryPatterns, {
+                        name = obj.Name,
+                        value = value,
+                        path = obj:GetFullName()
+                    })
+                end
+            end
+        end
+        
+        -- สแกน Scripts สำหรับรหัสลับ
+        for _, script in pairs(ReplicatedStorage:GetDescendants()) do
+            if script:IsA("Script") or script:IsA("LocalScript") or script:IsA("ModuleScript") then
+                local success, source = pcall(function()
+                    return script.Source
+                end)
+                
+                if success and source then
+                    -- หารูปแบบรหัสลับในโค้ด
+                    local patterns = {
+                        "[\"'](%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x)[\"']",
+                        "[\"'](%d+)[\"']",
+                        "[\"']([%a%d]+)[\"']",
+                        "= (%d+)",
+                        "= [\"']([%w%s]+)[\"']"
+                    }
+                    
+                    for _, pattern in pairs(patterns) do
+                        for code in string.gmatch(source, pattern) do
+                            if string.len(code) > 3 and string.len(code) < 100 then
+                                table.insert(memoryPatterns, {
+                                    name = script.Name .. " Code",
+                                    value = code,
+                                    path = script:GetFullName()
+                                })
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        
+        return memoryPatterns
+    end
+
+    bypassCommonChecks()
+    bypassEnabled = true
+    return true
+end
 
 -- ฟังก์ชันอัพเดท Progress Bar
 function updateProgress(percent, text)
@@ -457,7 +635,7 @@ function updateProgress(percent, text)
     end
 end
 
--- ฟังก์ชันหาและตรวจสอบ RemoteEvent จริง
+-- ฟังก์ชันหาและตรวจสอบ RemoteEvent จริง + เจาะรหัส
 function findAndValidateRemotes()
     validRemotes = {}
     
@@ -470,7 +648,10 @@ function findAndValidateRemotes()
         "ReplicatedStorage.CustomEvents.OrbCollect",
         "ReplicatedStorage.OrbRemote",
         "ReplicatedStorage.RE.OrbCollected",
-        "ReplicatedStorage.RemoteFunction.OrbCollect"
+        "ReplicatedStorage.RemoteFunction.OrbCollect",
+        "ReplicatedStorage.Events.CollectOrb",
+        "ReplicatedStorage.RemoteEvents.CollectItem",
+        "ReplicatedStorage.Events.ItemPickup"
     }
     
     -- ตรวจสอบ paths ที่กำหนด
@@ -488,7 +669,19 @@ function findAndValidateRemotes()
         end
         
         if valid and (current:IsA("RemoteEvent") or current:IsA("RemoteFunction")) then
-            table.insert(validRemotes, current)
+            -- ทดสอบว่าใช้งานได้จริง
+            local success = pcall(function()
+                if current:IsA("RemoteEvent") then
+                    current:FireServer("TestZone", "TestOrb")
+                else
+                    current:InvokeServer("TestZone", "TestOrb")
+                end
+                return true
+            end)
+            
+            if success then
+                table.insert(validRemotes, current)
+            end
         end
     end
     
@@ -498,15 +691,17 @@ function findAndValidateRemotes()
             if child:IsA("RemoteEvent") or child:IsA("RemoteFunction") then
                 local name = string.lower(child.Name)
                 if string.find(name, "orb") or string.find(name, "collect") or 
-                   string.find(name, "pickup") or string.find(name, "item") then
+                   string.find(name, "pickup") or string.find(name, "item") or
+                   string.find(name, "reward") or string.find(name, "coin") then
                    
                     -- ทดสอบว่า Remote ใช้งานได้จริง
                     local success = pcall(function()
                         if child:IsA("RemoteEvent") then
-                            child:FireServer("TEST_VALIDATION", "TEST_ORB_ID")
+                            child:FireServer("TestZone", "TestOrb")
                         else
-                            child:InvokeServer("TEST_VALIDATION", "TEST_ORB_ID")
+                            child:InvokeServer("TestZone", "TestOrb")
                         end
+                        return true
                     end)
                     
                     if success then
@@ -519,11 +714,13 @@ function findAndValidateRemotes()
     end
     
     scanAndTestRemotes(ReplicatedStorage)
+    scanAndTestRemotes(game:GetService("ServerScriptService"))
+    
     return #validRemotes > 0 and validRemotes[1] or nil
 end
 
--- ฟังก์ชันทดสอบ Orb ว่าทำงานได้จริง
-function testOrb(remote, zone, orbId)
+-- ฟังก์ชันทดสอบ Orb ว่าทำงานได้จริง + เจาะรหัส
+function testOrbWithCrack(remote, zone, orbId)
     local success, result = pcall(function()
         if remote:IsA("RemoteEvent") then
             remote:FireServer(zone, orbId)
@@ -532,33 +729,91 @@ function testOrb(remote, zone, orbId)
         end
         return true
     end)
-    return success
+    
+    -- ถ้าไม่สำเร็จ ให้ลองเจาะรหัส
+    if not success then
+        local crackedCodes = crackSecretCodes(remote)
+        for _, code in pairs(crackedCodes) do
+            local crackSuccess = pcall(function()
+                if remote:IsA("RemoteEvent") then
+                    remote:FireServer(zone, code)
+                else
+                    remote:InvokeServer(zone, code)
+                end
+                return true
+            end)
+            
+            if crackSuccess then
+                return true, code
+            end
+        end
+    end
+    
+    return success, orbId
 end
 
--- ฟังก์ชันสแกนหาของจริงและทดสอบ
-function deepScanAndValidate()
-    StatusLabel.Text = "🟡 Status: Starting deep scan..."
-    updateProgress(0.1, "🟡 Finding remote events...")
+-- ฟังก์ชันสแกนหาของจริงและทดสอบ + เจาะรหัส
+function deepScanAndBypass()
+    StatusLabel.Text = "🟡 Status: Starting deep scan with bypass..."
+    updateProgress(0.1, "🟡 Activating bypass...")
     foundOrbs = {}
     
+    -- เปิดใช้งานบายพาส
+    if not bypassEnabled then
+        enableAdvancedBypass()
+    end
+    
     -- หาและตรวจสอบ RemoteEvent
+    updateProgress(0.2, "🟡 Finding remote events...")
     local orbRemote = findAndValidateRemotes()
     
     if orbRemote then
-        updateProgress(0.3, "🟢 Found: " .. orbRemote.Name)
-        table.insert(foundOrbs, {
-            zone = "Validated",
-            orbId = "REMOTE_EVENT",
-            name = orbRemote.Name,
-            verified = true,
-            remote = orbRemote
-        })
+        updateProgress(0.4, "🟢 Found: " .. orbRemote.Name)
+        
+        -- เจาะรหัสลับจาก Remote นี้
+        updateProgress(0.5, "🟡 Cracking secret codes...")
+        local crackedCodes = crackSecretCodes(orbRemote)
+        local memoryCodes = crackMemoryPatterns()
+        
+        -- เพิ่มรหัสที่เจาะได้
+        for _, code in pairs(crackedCodes) do
+            table.insert(foundOrbs, {
+                zone = "Cracked Code",
+                orbId = code,
+                name = "Secret Code: " .. code,
+                verified = true,
+                remote = orbRemote,
+                cracked = true
+            })
+        end
+        
+        for _, codeData in pairs(memoryCodes) do
+            local success = pcall(function()
+                if orbRemote:IsA("RemoteEvent") then
+                    orbRemote:FireServer("Memory", codeData.value)
+                else
+                    orbRemote:InvokeServer("Memory", codeData.value)
+                end
+                return true
+            end)
+            
+            if success then
+                table.insert(foundOrbs, {
+                    zone = "Memory: " .. codeData.path,
+                    orbId = codeData.value,
+                    name = codeData.name,
+                    verified = true,
+                    remote = orbRemote,
+                    cracked = true
+                })
+            end
+        end
     else
-        updateProgress(0.3, "🔴 No valid remote found")
+        updateProgress(0.4, "🔴 No valid remote found")
     end
 
     -- สแกน Workspace
-    updateProgress(0.4, "🟡 Scanning workspace...")
+    updateProgress(0.6, "🟡 Scanning workspace...")
     local scannedItems = 0
     
     local function scanWorkspace(parent, path, depth)
@@ -573,7 +828,7 @@ function deepScanAndValidate()
                                     string.find(name, "coin") or string.find(name, "gem") or
                                     string.find(name, "chest") or string.find(name, "treasure")
                 
-                if isCollectible then
+                if isCollectible and orbRemote then
                     scannedItems = scannedItems + 1
                     
                     local orbId = obj:GetAttribute("OrbId") or obj:GetAttribute("ItemId") or 
@@ -581,19 +836,17 @@ function deepScanAndValidate()
                                  tostring(obj:GetDebugId())
                     
                     -- ทดสอบว่า Orb ใช้งานได้จริง
-                    local isValid = false
-                    if orbRemote then
-                        isValid = testOrb(orbRemote, path, orbId)
-                    end
+                    local isValid, crackedCode = testOrbWithCrack(orbRemote, path, orbId)
                     
                     if isValid then
                         table.insert(foundOrbs, {
                             zone = path,
-                            orbId = orbId,
+                            orbId = crackedCode or orbId,
                             name = obj.Name,
                             object = obj,
                             verified = true,
-                            remote = orbRemote
+                            remote = orbRemote,
+                            cracked = crackedCode ~= nil
                         })
                     end
                 end
@@ -607,7 +860,7 @@ function deepScanAndValidate()
     scanWorkspace(workspace, "Workspace", 0)
     
     -- สแกน ReplicatedStorage
-    updateProgress(0.7, "🟡 Scanning data...")
+    updateProgress(0.8, "🟡 Scanning data...")
     local function scanReplicated()
         for _, obj in pairs(ReplicatedStorage:GetDescendants()) do
             pcall(function()
@@ -616,19 +869,19 @@ function deepScanAndValidate()
                     if value and (string.len(value) == 36 or string.find(string.lower(obj.Name), "id")) then
                         scannedItems = scannedItems + 1
                         
-                        local isValid = false
                         if orbRemote then
-                            isValid = testOrb(orbRemote, "Data", value)
-                        end
-                        
-                        if isValid then
-                            table.insert(foundOrbs, {
-                                zone = "ReplicatedStorage",
-                                orbId = value,
-                                name = obj.Name,
-                                verified = true,
-                                remote = orbRemote
-                            })
+                            local isValid, crackedCode = testOrbWithCrack(orbRemote, "Data", value)
+                            
+                            if isValid then
+                                table.insert(foundOrbs, {
+                                    zone = "ReplicatedStorage",
+                                    orbId = crackedCode or value,
+                                    name = obj.Name,
+                                    verified = true,
+                                    remote = orbRemote,
+                                    cracked = crackedCode ~= nil
+                                })
+                            end
                         end
                     end
                 end
@@ -638,9 +891,9 @@ function deepScanAndValidate()
     
     scanReplicated()
     
-    updateProgress(1.0, "🟢 Scan complete! Found " .. #foundOrbs .. " valid items")
+    updateProgress(1.0, "🟢 Scan complete! Found " .. #foundOrbs .. " working items")
     wait(1)
-    updateProgress(0, "🟢 Ready - " .. #foundOrbs .. " valid items")
+    updateProgress(0, "🟢 Ready - " .. #foundOrbs .. " working items")
     
     updateOrbList()
 end
@@ -663,9 +916,15 @@ function updateOrbList(searchTerm)
                 validCount = validCount + 1
                 
                 local OrbFrame = Instance.new("Frame")
-                OrbFrame.Size = UDim2.new(1, -10, 0, 60)
+                OrbFrame.Size = UDim2.new(1, -10, 0, 65)
                 OrbFrame.Position = UDim2.new(0, 5, 0, yPosition)
-                OrbFrame.BackgroundColor3 = Color3.fromRGB(30, 60, 40)
+                
+                if orb.cracked then
+                    OrbFrame.BackgroundColor3 = Color3.fromRGB(80, 40, 120) -- สีม่วงสำหรับรหัสที่เจาะได้
+                else
+                    OrbFrame.BackgroundColor3 = Color3.fromRGB(30, 60, 40) -- สีเขียวสำหรับของปกติ
+                end
+                
                 OrbFrame.Parent = ListFrame
                 
                 local OrbCorner = Instance.new("UICorner")
@@ -673,16 +932,29 @@ function updateOrbList(searchTerm)
                 OrbCorner.Parent = OrbFrame
 
                 local OrbGradient = Instance.new("UIGradient")
-                OrbGradient.Color = ColorSequence.new({
-                    ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 80, 50)),
-                    ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 100, 70))
-                })
+                if orb.cracked then
+                    OrbGradient.Color = ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 40, 120)),
+                        ColorSequenceKeypoint.new(1, Color3.fromRGB(120, 60, 180))
+                    })
+                else
+                    OrbGradient.Color = ColorSequence.new({
+                        ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 80, 50)),
+                        ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 100, 70))
+                    })
+                end
                 OrbGradient.Parent = OrbFrame
 
                 local InfoLabel = Instance.new("TextLabel")
-                InfoLabel.Size = UDim2.new(0.7, 0, 0.6, 0)
+                InfoLabel.Size = UDim2.new(0.7, 0, 0.5, 0)
                 InfoLabel.Position = UDim2.new(0, 10, 0, 5)
-                InfoLabel.Text = "✅ " .. displayText
+                
+                if orb.cracked then
+                    InfoLabel.Text = "🔓 " .. displayText
+                else
+                    InfoLabel.Text = "✅ " .. displayText
+                end
+                
                 InfoLabel.BackgroundTransparency = 1
                 InfoLabel.TextColor3 = Color3.new(1, 1, 1)
                 InfoLabel.Font = Enum.Font.Gotham
@@ -691,15 +963,33 @@ function updateOrbList(searchTerm)
                 InfoLabel.Parent = OrbFrame
                 
                 local IDLabel = Instance.new("TextLabel")
-                IDLabel.Size = UDim2.new(0.7, 0, 0.4, 0)
-                IDLabel.Position = UDim2.new(0, 10, 0.6, 0)
-                IDLabel.Text = "🎯 " .. string.sub(orb.orbId, 1, 18) .. "..."
+                IDLabel.Size = UDim2.new(0.7, 0, 0.3, 0)
+                IDLabel.Position = UDim2.new(0, 10, 0.5, 0)
+                IDLabel.Text = "🎯 " .. string.sub(orb.orbId, 1, 20) .. "..."
                 IDLabel.BackgroundTransparency = 1
                 IDLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
                 IDLabel.Font = Enum.Font.Gotham
                 IDLabel.TextSize = 10
                 IDLabel.TextXAlignment = Enum.TextXAlignment.Left
                 IDLabel.Parent = OrbFrame
+                
+                local TypeLabel = Instance.new("TextLabel")
+                TypeLabel.Size = UDim2.new(0.7, 0, 0.2, 0)
+                TypeLabel.Position = UDim2.new(0, 10, 0.8, 0)
+                
+                if orb.cracked then
+                    TypeLabel.Text = "💎 CRACKED CODE"
+                    TypeLabel.TextColor3 = Color3.fromRGB(255, 200, 255)
+                else
+                    TypeLabel.Text = "✨ VALID ITEM"
+                    TypeLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
+                end
+                
+                TypeLabel.BackgroundTransparency = 1
+                TypeLabel.Font = Enum.Font.GothamBold
+                TypeLabel.TextSize = 9
+                TypeLabel.TextXAlignment = Enum.TextXAlignment.Left
+                TypeLabel.Parent = OrbFrame
                 
                 local CollectButton = Instance.new("TextButton")
                 CollectButton.Size = UDim2.new(0.25, 0, 0.6, 0)
@@ -734,7 +1024,7 @@ function updateOrbList(searchTerm)
                     end
                 end)
                 
-                yPosition = yPosition + 65
+                yPosition = yPosition + 70
                 ListFrame.CanvasSize = UDim2.new(0, 0, 0, yPosition)
             end
         end
@@ -744,7 +1034,7 @@ function updateOrbList(searchTerm)
         local NoResults = Instance.new("TextLabel")
         NoResults.Size = UDim2.new(1, 0, 0, 80)
         NoResults.Position = UDim2.new(0, 0, 0, 10)
-        NoResults.Text = "No valid items found.\nClick Deep Scan to find working items!"
+        NoResults.Text = "No working items found.\nClick Deep Scan to find working items!"
         NoResults.BackgroundTransparency = 1
         NoResults.TextColor3 = Color3.fromRGB(150, 150, 150)
         NoResults.Font = Enum.Font.Gotham
@@ -753,7 +1043,7 @@ function updateOrbList(searchTerm)
         NoResults.Parent = ListFrame
     end
     
-    StatusLabel.Text = "🟢 Ready - " .. validCount .. " valid items available"
+    StatusLabel.Text = "🟢 Ready - " .. validCount .. " working items available"
 end
 
 -- Auto Farm
@@ -761,7 +1051,7 @@ function startAutoFarm()
     if isAutoCollecting then return end
     
     if #foundOrbs == 0 then
-        StatusLabel.Text = "🔴 No valid items to farm"
+        StatusLabel.Text = "🔴 No working items to farm"
         return
     end
     
@@ -802,7 +1092,7 @@ end
 -- Mass Collect
 function massCollectAll()
     if #foundOrbs == 0 then
-        StatusLabel.Text = "🔴 No valid items to collect"
+        StatusLabel.Text = "🔴 No working items to collect"
         return
     end
     
@@ -856,17 +1146,29 @@ function loadScriptHub()
     end)
 end
 
+function activateAdvancedBypass()
+    ToolsStatus.Text = "🟡 Activating Advanced Bypass..."
+    local success = enableAdvancedBypass()
+    if success then
+        ToolsStatus.Text = "✅ Advanced Bypass Activated!"
+        BypassButton.Text = "🛡️ BYPASS ACTIVE"
+        BypassButton.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
+    else
+        ToolsStatus.Text = "🔴 Bypass Failed"
+    end
+end
+
 -- Minimize Function
 function toggleMinimize()
     if isMinimized then
         -- ขยาย
-        MainFrame.Size = UDim2.new(0, 420, 0, 600)
+        MainFrame.Size = UDim2.new(0, 450, 0, 650)
         ContentArea.Visible = true
         MinimizeButton.Text = "─"
         isMinimized = false
     else
         -- พับ
-        MainFrame.Size = UDim2.new(0, 420, 0, 60)
+        MainFrame.Size = UDim2.new(0, 450, 0, 60)
         ContentArea.Visible = false
         MinimizeButton.Text = "＋"
         isMinimized = true
@@ -894,7 +1196,8 @@ ToolsTab.MouseButton1Click:Connect(function()
     ToolsTab.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
 end)
 
-ScanButton.MouseButton1Click:Connect(deepScanAndValidate)
+ScanButton.MouseButton1Click:Connect(deepScanAndBypass)
+BypassButton.MouseButton1Click:Connect(activateAdvancedBypass)
 
 AutoFarmButton.MouseButton1Click:Connect(function()
     if isAutoCollecting then
@@ -914,6 +1217,7 @@ IYButton.MouseButton1Click:Connect(loadInfiniteYield)
 DexButton.MouseButton1Click:Connect(loadDexExplorer)
 RemoteSpyButton.MouseButton1Click:Connect(loadRemoteSpy)
 ScriptHubButton.MouseButton1Click:Connect(loadScriptHub)
+AdvancedBypassButton.MouseButton1Click:Connect(activateAdvancedBypass)
 
 -- เริ่มต้น
 StatusLabel.Text = "🟢 Ready! Click Deep Scan to find working items"

@@ -21,9 +21,9 @@ ScreenGui.Name = "OrbHunterPro"
 ScreenGui.Parent = player.PlayerGui
 
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 400, 0, 550)
+MainFrame.Size = UDim2.new(0, 420, 0, 600)
 MainFrame.Position = UDim2.new(0.1, 0, 0.1, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 
@@ -63,184 +63,278 @@ UserInputService.InputChanged:Connect(function(input)
 end)
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 12)
+UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = MainFrame
+
+-- Gradient Background
+local Gradient = Instance.new("UIGradient")
+Gradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(15, 15, 25)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(25, 15, 35))
+})
+Gradient.Rotation = 45
+Gradient.Parent = MainFrame
 
 -- Header
 local Header = Instance.new("Frame")
-Header.Size = UDim2.new(1, 0, 0, 50)
+Header.Size = UDim2.new(1, 0, 0, 60)
 Header.Position = UDim2.new(0, 0, 0, 0)
-Header.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Header.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
 Header.Parent = MainFrame
 
 local HeaderCorner = Instance.new("UICorner")
-HeaderCorner.CornerRadius = UDim.new(0, 12)
+HeaderCorner.CornerRadius = UDim.new(0, 15)
 HeaderCorner.Parent = Header
+
+local HeaderGradient = Instance.new("UIGradient")
+HeaderGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(80, 40, 120)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 80, 160))
+})
+HeaderGradient.Parent = Header
 
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(0.7, 0, 1, 0)
-Title.Position = UDim2.new(0, 15, 0, 0)
-Title.Text = "🔮 ORB HUNTER PRO"
+Title.Position = UDim2.new(0, 20, 0, 0)
+Title.Text = "🌟 ORB HUNTER PRO"
 Title.BackgroundTransparency = 1
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.Font = Enum.Font.GothamBold
-Title.TextSize = 16
+Title.TextSize = 18
 Title.TextXAlignment = Enum.TextXAlignment.Left
 Title.Parent = Header
 
+-- Minimize Button
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 30, 0, 30)
+MinimizeButton.Position = UDim2.new(1, -70, 0.5, -15)
+MinimizeButton.Text = "─"
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(60, 60, 80)
+MinimizeButton.TextColor3 = Color3.new(1, 1, 1)
+MinimizeButton.Font = Enum.Font.GothamBold
+MinimizeButton.TextSize = 16
+MinimizeButton.Parent = Header
+
+local MinimizeCorner = Instance.new("UICorner")
+MinimizeCorner.CornerRadius = UDim.new(1, 0)
+MinimizeCorner.Parent = MinimizeButton
+
+-- Close Button
 local CloseButton = Instance.new("TextButton")
 CloseButton.Size = UDim2.new(0, 30, 0, 30)
 CloseButton.Position = UDim2.new(1, -35, 0.5, -15)
-CloseButton.Text = "X"
+CloseButton.Text = "×"
 CloseButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
 CloseButton.TextColor3 = Color3.new(1, 1, 1)
 CloseButton.Font = Enum.Font.GothamBold
-CloseButton.TextSize = 14
+CloseButton.TextSize = 18
 CloseButton.Parent = Header
 
 local CloseCorner = Instance.new("UICorner")
 CloseCorner.CornerRadius = UDim.new(1, 0)
 CloseCorner.Parent = CloseButton
 
+-- Content Area (จะถูกซ่อนเมื่อ minimize)
+local ContentArea = Instance.new("Frame")
+ContentArea.Size = UDim2.new(1, 0, 1, -60)
+ContentArea.Position = UDim2.new(0, 0, 0, 60)
+ContentArea.BackgroundTransparency = 1
+ContentArea.Parent = MainFrame
+
 -- Tabs
 local TabContainer = Instance.new("Frame")
-TabContainer.Size = UDim2.new(1, -20, 0, 40)
-TabContainer.Position = UDim2.new(0, 10, 0, 55)
+TabContainer.Size = UDim2.new(1, -20, 0, 45)
+TabContainer.Position = UDim2.new(0, 10, 0, 10)
 TabContainer.BackgroundTransparency = 1
-TabContainer.Parent = MainFrame
+TabContainer.Parent = ContentArea
 
 local MainTab = Instance.new("TextButton")
 MainTab.Size = UDim2.new(0.48, 0, 1, 0)
 MainTab.Position = UDim2.new(0, 0, 0, 0)
-MainTab.Text = "MAIN"
-MainTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MainTab.Text = "🔮 MAIN"
+MainTab.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
 MainTab.TextColor3 = Color3.new(1, 1, 1)
 MainTab.Font = Enum.Font.GothamBold
-MainTab.TextSize = 12
+MainTab.TextSize = 14
 MainTab.Parent = TabContainer
 
 local MainTabCorner = Instance.new("UICorner")
-MainTabCorner.CornerRadius = UDim.new(0, 6)
+MainTabCorner.CornerRadius = UDim.new(0, 8)
 MainTabCorner.Parent = MainTab
 
 local ToolsTab = Instance.new("TextButton")
 ToolsTab.Size = UDim2.new(0.48, 0, 1, 0)
 ToolsTab.Position = UDim2.new(0.52, 0, 0, 0)
-ToolsTab.Text = "TOOLS"
-ToolsTab.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+ToolsTab.Text = "⚙️ TOOLS"
+ToolsTab.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
 ToolsTab.TextColor3 = Color3.fromRGB(180, 180, 180)
 ToolsTab.Font = Enum.Font.GothamBold
-ToolsTab.TextSize = 12
+ToolsTab.TextSize = 14
 ToolsTab.Parent = TabContainer
 
 local ToolsTabCorner = Instance.new("UICorner")
-ToolsTabCorner.CornerRadius = UDim.new(0, 6)
+ToolsTabCorner.CornerRadius = UDim.new(0, 8)
 ToolsTabCorner.Parent = ToolsTab
 
 -- Main Content
 local MainContent = Instance.new("Frame")
-MainContent.Size = UDim2.new(1, -20, 0, 450)
-MainContent.Position = UDim2.new(0, 10, 0, 100)
+MainContent.Size = UDim2.new(1, -20, 0, 465)
+MainContent.Position = UDim2.new(0, 10, 0, 60)
 MainContent.BackgroundTransparency = 1
-MainContent.Parent = MainFrame
+MainContent.Parent = ContentArea
 
 -- Tools Content
 local ToolsContent = Instance.new("Frame")
-ToolsContent.Size = UDim2.new(1, -20, 0, 450)
-ToolsContent.Position = UDim2.new(0, 10, 0, 100)
+ToolsContent.Size = UDim2.new(1, -20, 0, 465)
+ToolsContent.Position = UDim2.new(0, 10, 0, 60)
 ToolsContent.BackgroundTransparency = 1
-ToolsContent.Parent = MainFrame
+ToolsContent.Parent = ContentArea
 ToolsContent.Visible = false
 
 -- Control Buttons
 local ControlFrame = Instance.new("Frame")
-ControlFrame.Size = UDim2.new(1, 0, 0, 180)
+ControlFrame.Size = UDim2.new(1, 0, 0, 200)
 ControlFrame.Position = UDim2.new(0, 0, 0, 0)
 ControlFrame.BackgroundTransparency = 1
 ControlFrame.Parent = MainContent
 
 -- Scan Button
 local ScanButton = Instance.new("TextButton")
-ScanButton.Size = UDim2.new(1, 0, 0, 45)
+ScanButton.Size = UDim2.new(1, 0, 0, 50)
 ScanButton.Position = UDim2.new(0, 0, 0, 0)
 ScanButton.Text = "🔍 DEEP SCAN ORBS"
 ScanButton.BackgroundColor3 = Color3.fromRGB(0, 120, 255)
 ScanButton.TextColor3 = Color3.new(1, 1, 1)
 ScanButton.Font = Enum.Font.GothamBold
-ScanButton.TextSize = 14
+ScanButton.TextSize = 16
 ScanButton.Parent = ControlFrame
 
 local ScanCorner = Instance.new("UICorner")
-ScanCorner.CornerRadius = UDim.new(0, 8)
+ScanCorner.CornerRadius = UDim.new(0, 10)
 ScanCorner.Parent = ScanButton
+
+local ScanGradient = Instance.new("UIGradient")
+ScanGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 100, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 200, 255))
+})
+ScanGradient.Parent = ScanButton
+
+-- Button Container
+local ButtonContainer = Instance.new("Frame")
+ButtonContainer.Size = UDim2.new(1, 0, 0, 50)
+ButtonContainer.Position = UDim2.new(0, 0, 0, 55)
+ButtonContainer.BackgroundTransparency = 1
+ButtonContainer.Parent = ControlFrame
 
 -- Auto Farm Button
 local AutoFarmButton = Instance.new("TextButton")
-AutoFarmButton.Size = UDim2.new(0.48, 0, 0, 40)
-AutoFarmButton.Position = UDim2.new(0, 0, 0, 50)
+AutoFarmButton.Size = UDim2.new(0.48, 0, 1, 0)
+AutoFarmButton.Position = UDim2.new(0, 0, 0, 0)
 AutoFarmButton.Text = "⚡ AUTO FARM"
 AutoFarmButton.BackgroundColor3 = Color3.fromRGB(255, 150, 0)
 AutoFarmButton.TextColor3 = Color3.new(1, 1, 1)
 AutoFarmButton.Font = Enum.Font.GothamBold
-AutoFarmButton.TextSize = 12
-AutoFarmButton.Parent = ControlFrame
+AutoFarmButton.TextSize = 14
+AutoFarmButton.Parent = ButtonContainer
 
 local AutoFarmCorner = Instance.new("UICorner")
-AutoFarmCorner.CornerRadius = UDim.new(0, 6)
+AutoFarmCorner.CornerRadius = UDim.new(0, 8)
 AutoFarmCorner.Parent = AutoFarmButton
+
+local AutoFarmGradient = Instance.new("UIGradient")
+AutoFarmGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 120, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 200, 0))
+})
+AutoFarmGradient.Parent = AutoFarmButton
 
 -- Mass Collect Button
 local MassCollectButton = Instance.new("TextButton")
-MassCollectButton.Size = UDim2.new(0.48, 0, 0, 40)
-MassCollectButton.Position = UDim2.new(0.52, 0, 0, 50)
+MassCollectButton.Size = UDim2.new(0.48, 0, 1, 0)
+MassCollectButton.Position = UDim2.new(0.52, 0, 0, 0)
 MassCollectButton.Text = "💥 MASS COLLECT"
 MassCollectButton.BackgroundColor3 = Color3.fromRGB(220, 0, 0)
 MassCollectButton.TextColor3 = Color3.new(1, 1, 1)
 MassCollectButton.Font = Enum.Font.GothamBold
-MassCollectButton.TextSize = 12
-MassCollectButton.Parent = ControlFrame
+MassCollectButton.TextSize = 14
+MassCollectButton.Parent = ButtonContainer
 
 local MassCollectCorner = Instance.new("UICorner")
-MassCollectCorner.CornerRadius = UDim.new(0, 6)
+MassCollectCorner.CornerRadius = UDim.new(0, 8)
 MassCollectCorner.Parent = MassCollectButton
+
+local MassCollectGradient = Instance.new("UIGradient")
+MassCollectGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 0, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 50, 50))
+})
+MassCollectGradient.Parent = MassCollectButton
 
 -- Status
 local StatusLabel = Instance.new("TextLabel")
-StatusLabel.Size = UDim2.new(1, 0, 0, 30)
-StatusLabel.Position = UDim2.new(0, 0, 0, 95)
-StatusLabel.Text = "Status: Ready to scan"
+StatusLabel.Size = UDim2.new(1, 0, 0, 35)
+StatusLabel.Position = UDim2.new(0, 0, 0, 110)
+StatusLabel.Text = "🟢 Status: Ready to scan"
 StatusLabel.BackgroundTransparency = 1
 StatusLabel.TextColor3 = Color3.new(1, 1, 1)
 StatusLabel.Font = Enum.Font.Gotham
-StatusLabel.TextSize = 12
+StatusLabel.TextSize = 13
 StatusLabel.Parent = ControlFrame
+
+-- Progress Bar
+local ProgressBar = Instance.new("Frame")
+ProgressBar.Size = UDim2.new(1, 0, 0, 4)
+ProgressBar.Position = UDim2.new(0, 0, 0, 150)
+ProgressBar.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+ProgressBar.Parent = ControlFrame
+
+local ProgressBarCorner = Instance.new("UICorner")
+ProgressBarCorner.CornerRadius = UDim.new(1, 0)
+ProgressBarCorner.Parent = ProgressBar
+
+local ProgressFill = Instance.new("Frame")
+ProgressFill.Size = UDim2.new(0, 0, 1, 0)
+ProgressFill.BackgroundColor3 = Color3.fromRGB(0, 200, 255)
+ProgressFill.Parent = ProgressBar
+
+local ProgressFillCorner = Instance.new("UICorner")
+ProgressFillCorner.CornerRadius = UDim.new(1, 0)
+ProgressFillCorner.Parent = ProgressFill
+
+local ProgressGradient = Instance.new("UIGradient")
+ProgressGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 150, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 255, 200))
+})
+ProgressGradient.Parent = ProgressFill
 
 -- Search
 local SearchBox = Instance.new("TextBox")
-SearchBox.Size = UDim2.new(1, 0, 0, 35)
-SearchBox.Position = UDim2.new(0, 0, 0, 130)
+SearchBox.Size = UDim2.new(1, 0, 0, 40)
+SearchBox.Position = UDim2.new(0, 0, 0, 160)
 SearchBox.PlaceholderText = "🔍 Search items..."
-SearchBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+SearchBox.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
 SearchBox.TextColor3 = Color3.new(1, 1, 1)
 SearchBox.Font = Enum.Font.Gotham
-SearchBox.TextSize = 12
+SearchBox.TextSize = 13
 SearchBox.Parent = ControlFrame
 
 local SearchCorner = Instance.new("UICorner")
-SearchCorner.CornerRadius = UDim.new(0, 6)
+SearchCorner.CornerRadius = UDim.new(0, 8)
 SearchCorner.Parent = SearchBox
 
 -- List
 local ListFrame = Instance.new("ScrollingFrame")
-ListFrame.Size = UDim2.new(1, 0, 0, 250)
-ListFrame.Position = UDim2.new(0, 0, 0, 180)
+ListFrame.Size = UDim2.new(1, 0, 0, 245)
+ListFrame.Position = UDim2.new(0, 0, 0, 210)
 ListFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
-ListFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-ListFrame.ScrollBarThickness = 5
+ListFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+ListFrame.ScrollBarThickness = 6
 ListFrame.Parent = MainContent
 
 local ListCorner = Instance.new("UICorner")
-ListCorner.CornerRadius = UDim.new(0, 8)
+ListCorner.CornerRadius = UDim.new(0, 10)
 ListCorner.Parent = ListFrame
 
 -- Tools Section
@@ -252,83 +346,122 @@ ToolsFrame.Parent = ToolsContent
 
 -- Infinite Yield
 local IYButton = Instance.new("TextButton")
-IYButton.Size = UDim2.new(1, 0, 0, 45)
+IYButton.Size = UDim2.new(1, 0, 0, 50)
 IYButton.Position = UDim2.new(0, 0, 0, 0)
 IYButton.Text = "🎮 LOAD INFINITE YIELD"
 IYButton.BackgroundColor3 = Color3.fromRGB(0, 150, 200)
 IYButton.TextColor3 = Color3.new(1, 1, 1)
 IYButton.Font = Enum.Font.GothamBold
-IYButton.TextSize = 14
+IYButton.TextSize = 15
 IYButton.Parent = ToolsFrame
 
 local IYCorner = Instance.new("UICorner")
-IYCorner.CornerRadius = UDim.new(0, 8)
+IYCorner.CornerRadius = UDim.new(0, 10)
 IYCorner.Parent = IYButton
+
+local IYGradient = Instance.new("UIGradient")
+IYGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 120, 200)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 200, 255))
+})
+IYGradient.Parent = IYButton
 
 -- Dex Explorer
 local DexButton = Instance.new("TextButton")
-DexButton.Size = UDim2.new(1, 0, 0, 45)
-DexButton.Position = UDim2.new(0, 0, 0, 50)
+DexButton.Size = UDim2.new(1, 0, 0, 50)
+DexButton.Position = UDim2.new(0, 0, 0, 55)
 DexButton.Text = "🔍 LOAD DEX EXPLORER"
 DexButton.BackgroundColor3 = Color3.fromRGB(150, 0, 150)
 DexButton.TextColor3 = Color3.new(1, 1, 1)
 DexButton.Font = Enum.Font.GothamBold
-DexButton.TextSize = 14
+DexButton.TextSize = 15
 DexButton.Parent = ToolsFrame
 
 local DexCorner = Instance.new("UICorner")
-DexCorner.CornerRadius = UDim.new(0, 8)
+DexCorner.CornerRadius = UDim.new(0, 10)
 DexCorner.Parent = DexButton
+
+local DexGradient = Instance.new("UIGradient")
+DexGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(120, 0, 150)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 0, 200))
+})
+DexGradient.Parent = DexButton
 
 -- Remote Spy
 local RemoteSpyButton = Instance.new("TextButton")
-RemoteSpyButton.Size = UDim2.new(1, 0, 0, 45)
-RemoteSpyButton.Position = UDim2.new(0, 0, 0, 100)
+RemoteSpyButton.Size = UDim2.new(1, 0, 0, 50)
+RemoteSpyButton.Position = UDim2.new(0, 0, 0, 110)
 RemoteSpyButton.Text = "📡 LOAD REMOTE SPY"
 RemoteSpyButton.BackgroundColor3 = Color3.fromRGB(200, 100, 0)
 RemoteSpyButton.TextColor3 = Color3.new(1, 1, 1)
 RemoteSpyButton.Font = Enum.Font.GothamBold
-RemoteSpyButton.TextSize = 14
+RemoteSpyButton.TextSize = 15
 RemoteSpyButton.Parent = ToolsFrame
 
 local RemoteSpyCorner = Instance.new("UICorner")
-RemoteSpyCorner.CornerRadius = UDim.new(0, 8)
+RemoteSpyCorner.CornerRadius = UDim.new(0, 10)
 RemoteSpyCorner.Parent = RemoteSpyButton
+
+local RemoteSpyGradient = Instance.new("UIGradient")
+RemoteSpyGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 80, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 150, 0))
+})
+RemoteSpyGradient.Parent = RemoteSpyButton
 
 -- Script Hub
 local ScriptHubButton = Instance.new("TextButton")
-ScriptHubButton.Size = UDim2.new(1, 0, 0, 45)
-ScriptHubButton.Position = UDim2.new(0, 0, 0, 150)
+ScriptHubButton.Size = UDim2.new(1, 0, 0, 50)
+ScriptHubButton.Position = UDim2.new(0, 0, 0, 165)
 ScriptHubButton.Text = "🚀 LOAD SCRIPT HUB"
 ScriptHubButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 ScriptHubButton.TextColor3 = Color3.new(1, 1, 1)
 ScriptHubButton.Font = Enum.Font.GothamBold
-ScriptHubButton.TextSize = 14
+ScriptHubButton.TextSize = 15
 ScriptHubButton.Parent = ToolsFrame
 
 local ScriptHubCorner = Instance.new("UICorner")
-ScriptHubCorner.CornerRadius = UDim.new(0, 8)
+ScriptHubCorner.CornerRadius = UDim.new(0, 10)
 ScriptHubCorner.Parent = ScriptHubButton
+
+local ScriptHubGradient = Instance.new("UIGradient")
+ScriptHubGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 120, 0)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 200, 100))
+})
+ScriptHubGradient.Parent = ScriptHubButton
 
 -- Tools Status
 local ToolsStatus = Instance.new("TextLabel")
 ToolsStatus.Size = UDim2.new(1, 0, 0, 40)
-ToolsStatus.Position = UDim2.new(0, 0, 0, 200)
-ToolsStatus.Text = "Tools: Ready to load"
+ToolsStatus.Position = UDim2.new(0, 0, 0, 220)
+ToolsStatus.Text = "🟢 Tools: Ready to load"
 ToolsStatus.BackgroundTransparency = 1
 ToolsStatus.TextColor3 = Color3.new(1, 1, 1)
 ToolsStatus.Font = Enum.Font.Gotham
-ToolsStatus.TextSize = 12
+ToolsStatus.TextSize = 13
 ToolsStatus.Parent = ToolsFrame
 
 -- ตัวแปร
 local foundOrbs = {}
 local isAutoCollecting = false
+local isMinimized = false
+local validRemotes = {}
 
--- ฟังก์ชันหา RemoteEvent จริง
-function findOrbRemote()
-    -- ลองหาใน paths ต่างๆ
-    local paths = {
+-- ฟังก์ชันอัพเดท Progress Bar
+function updateProgress(percent, text)
+    ProgressFill.Size = UDim2.new(percent, 0, 1, 0)
+    if text then
+        StatusLabel.Text = text
+    end
+end
+
+-- ฟังก์ชันหาและตรวจสอบ RemoteEvent จริง
+function findAndValidateRemotes()
+    validRemotes = {}
+    
+    local remotePaths = {
         "ReplicatedStorage.Packages.Knit.Services.OrbService.RF.Collect",
         "ReplicatedStorage.Packages.Network.RE.Orb Collected",
         "ReplicatedStorage.RemoteEvents.OrbCollected",
@@ -340,129 +473,161 @@ function findOrbRemote()
         "ReplicatedStorage.RemoteFunction.OrbCollect"
     }
     
-    for _, path in ipairs(paths) do
+    -- ตรวจสอบ paths ที่กำหนด
+    for _, path in ipairs(remotePaths) do
         local current = game
+        local valid = true
+        
         for _, part in ipairs(string.split(path, ".")) do
             if current:FindFirstChild(part) then
                 current = current[part]
             else
-                current = nil
+                valid = false
                 break
             end
         end
-        if current and (current:IsA("RemoteEvent") or current:IsA("RemoteFunction")) then
-            return current
+        
+        if valid and (current:IsA("RemoteEvent") or current:IsA("RemoteFunction")) then
+            table.insert(validRemotes, current)
         end
     end
     
-    -- สแกนหาแบบอัตโนมัติ
-    local function scanForRemote(parent)
+    -- สแกนหาแบบอัตโนมัติและทดสอบ
+    local function scanAndTestRemotes(parent)
         for _, child in pairs(parent:GetChildren()) do
             if child:IsA("RemoteEvent") or child:IsA("RemoteFunction") then
                 local name = string.lower(child.Name)
-                if string.find(name, "orb") or string.find(name, "collect") or string.find(name, "pickup") then
-                    return child
+                if string.find(name, "orb") or string.find(name, "collect") or 
+                   string.find(name, "pickup") or string.find(name, "item") then
+                   
+                    -- ทดสอบว่า Remote ใช้งานได้จริง
+                    local success = pcall(function()
+                        if child:IsA("RemoteEvent") then
+                            child:FireServer("TEST_VALIDATION", "TEST_ORB_ID")
+                        else
+                            child:InvokeServer("TEST_VALIDATION", "TEST_ORB_ID")
+                        end
+                    end)
+                    
+                    if success then
+                        table.insert(validRemotes, child)
+                    end
                 end
             end
-            local result = scanForRemote(child)
-            if result then return result end
+            scanAndTestRemotes(child)
         end
-        return nil
     end
     
-    return scanForRemote(ReplicatedStorage)
+    scanAndTestRemotes(ReplicatedStorage)
+    return #validRemotes > 0 and validRemotes[1] or nil
 end
 
--- ฟังก์ชันสแกนหาของจริง
-function deepScanForOrbs()
-    StatusLabel.Text = "Status: 🔍 Starting deep scan..."
+-- ฟังก์ชันทดสอบ Orb ว่าทำงานได้จริง
+function testOrb(remote, zone, orbId)
+    local success, result = pcall(function()
+        if remote:IsA("RemoteEvent") then
+            remote:FireServer(zone, orbId)
+        else
+            remote:InvokeServer(zone, orbId)
+        end
+        return true
+    end)
+    return success
+end
+
+-- ฟังก์ชันสแกนหาของจริงและทดสอบ
+function deepScanAndValidate()
+    StatusLabel.Text = "🟡 Status: Starting deep scan..."
+    updateProgress(0.1, "🟡 Finding remote events...")
     foundOrbs = {}
     
-    -- หา RemoteEvent
-    local orbRemote = findOrbRemote()
+    -- หาและตรวจสอบ RemoteEvent
+    local orbRemote = findAndValidateRemotes()
     
     if orbRemote then
-        StatusLabel.Text = "Status: ✅ Found Remote: " .. orbRemote.Name
+        updateProgress(0.3, "🟢 Found: " .. orbRemote.Name)
         table.insert(foundOrbs, {
-            zone = "RemoteEvent",
-            orbId = "AUTO_DETECT",
+            zone = "Validated",
+            orbId = "REMOTE_EVENT",
             name = orbRemote.Name,
-            verified = true
+            verified = true,
+            remote = orbRemote
         })
     else
-        StatusLabel.Text = "Status: ❌ No RemoteEvent found"
+        updateProgress(0.3, "🔴 No valid remote found")
     end
 
     -- สแกน Workspace
-    local function scanWorkspace(parent, path)
+    updateProgress(0.4, "🟡 Scanning workspace...")
+    local scannedItems = 0
+    
+    local function scanWorkspace(parent, path, depth)
+        if depth > 6 then return end
+        
         for _, obj in pairs(parent:GetChildren()) do
             pcall(function()
                 local name = string.lower(obj.Name)
+                local isCollectible = string.find(name, "orb") or string.find(name, "crystal") or
+                                    string.find(name, "collect") or string.find(name, "pickup") or
+                                    string.find(name, "item") or string.find(name, "reward") or
+                                    string.find(name, "coin") or string.find(name, "gem") or
+                                    string.find(name, "chest") or string.find(name, "treasure")
                 
-                -- ตรวจสอบชื่อที่เกี่ยวข้อง
-                if string.find(name, "orb") or string.find(name, "crystal") or 
-                   string.find(name, "collect") or string.find(name, "pickup") or
-                   string.find(name, "item") or string.find(name, "reward") or
-                   string.find(name, "coin") or string.find(name, "gem") or
-                   string.find(name, "chest") or string.find(name, "treasure") then
+                if isCollectible then
+                    scannedItems = scannedItems + 1
                     
-                    local orbId = obj:GetAttribute("OrbId") or 
-                                 obj:GetAttribute("ItemId") or 
-                                 obj:GetAttribute("UUID") or
-                                 obj:GetAttribute("ID") or
+                    local orbId = obj:GetAttribute("OrbId") or obj:GetAttribute("ItemId") or 
+                                 obj:GetAttribute("UUID") or obj:GetAttribute("ID") or
                                  tostring(obj:GetDebugId())
                     
-                    table.insert(foundOrbs, {
-                        zone = path,
-                        orbId = orbId,
-                        name = obj.Name,
-                        object = obj,
-                        verified = true
-                    })
-                end
-                
-                -- ตรวจสอบ Attributes
-                for attrName, attrValue in pairs(obj:GetAttributes()) do
-                    if type(attrValue) == "string" and (string.len(attrValue) == 36 or string.find(string.lower(attrName), "id")) then
+                    -- ทดสอบว่า Orb ใช้งานได้จริง
+                    local isValid = false
+                    if orbRemote then
+                        isValid = testOrb(orbRemote, path, orbId)
+                    end
+                    
+                    if isValid then
                         table.insert(foundOrbs, {
-                            zone = path .. " [Attr]",
-                            orbId = attrValue,
-                            name = obj.Name .. "." .. attrName,
-                            verified = false
+                            zone = path,
+                            orbId = orbId,
+                            name = obj.Name,
+                            object = obj,
+                            verified = true,
+                            remote = orbRemote
                         })
                     end
                 end
                 
                 -- เรียกซ้ำ
-                if #obj:GetChildren() > 0 then
-                    scanWorkspace(obj, path .. " > " .. obj.Name)
-                end
+                scanWorkspace(obj, path .. " > " .. obj.Name, depth + 1)
             end)
         end
     end
 
+    scanWorkspace(workspace, "Workspace", 0)
+    
     -- สแกน ReplicatedStorage
+    updateProgress(0.7, "🟡 Scanning data...")
     local function scanReplicated()
         for _, obj in pairs(ReplicatedStorage:GetDescendants()) do
             pcall(function()
                 if obj:IsA("StringValue") then
                     local value = obj.Value
                     if value and (string.len(value) == 36 or string.find(string.lower(obj.Name), "id")) then
-                        table.insert(foundOrbs, {
-                            zone = "ReplicatedStorage",
-                            orbId = value,
-                            name = obj.Name,
-                            verified = true
-                        })
-                    end
-                elseif obj:IsA("Folder") and (string.find(string.lower(obj.Name), "orb") or string.find(string.lower(obj.Name), "item")) then
-                    for _, item in pairs(obj:GetChildren()) do
-                        if item:IsA("StringValue") then
+                        scannedItems = scannedItems + 1
+                        
+                        local isValid = false
+                        if orbRemote then
+                            isValid = testOrb(orbRemote, "Data", value)
+                        end
+                        
+                        if isValid then
                             table.insert(foundOrbs, {
-                                zone = "Folder: " .. obj.Name,
-                                orbId = item.Value or item.Name,
-                                name = item.Name,
-                                verified = true
+                                zone = "ReplicatedStorage",
+                                orbId = value,
+                                name = obj.Name,
+                                verified = true,
+                                remote = orbRemote
                             })
                         end
                     end
@@ -470,128 +635,133 @@ function deepScanForOrbs()
             end)
         end
     end
-
-    -- เริ่มสแกน
-    scanWorkspace(workspace, "Workspace")
+    
     scanReplicated()
     
-    -- ถ้าไม่พบอะไรเลย ให้เพิ่มตัวอย่าง
-    if #foundOrbs == 0 then
-        table.insert(foundOrbs, {
-            zone = "Town",
-            orbId = "53b59272-a881-43c0-8205-46a16d893bac",
-            name = "Sample Orb 1",
-            verified = false
-        })
-        table.insert(foundOrbs, {
-            zone = "Forest", 
-            orbId = "f50fea77-0689-4c6a-93f2-1a2b3c4d5e6f",
-            name = "Sample Orb 2",
-            verified = false
-        })
-    end
+    updateProgress(1.0, "🟢 Scan complete! Found " .. #foundOrbs .. " valid items")
+    wait(1)
+    updateProgress(0, "🟢 Ready - " .. #foundOrbs .. " valid items")
     
-    StatusLabel.Text = "Status: ✅ Found " .. #foundOrbs .. " items"
     updateOrbList()
 end
 
--- อัพเดตลิสต์
+-- อัพเดตลิสต์ (แสดงเฉพาะของที่ใช้งานได้)
 function updateOrbList(searchTerm)
     ListFrame:ClearAllChildren()
     ListFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
     
     local yPosition = 5
-    local count = 0
+    local validCount = 0
     
     for _, orb in pairs(foundOrbs) do
-        local displayText = orb.name
-        local searchText = displayText .. orb.orbId .. orb.zone
-        
-        if not searchTerm or searchTerm == "" or string.find(string.lower(searchText), string.lower(searchTerm)) then
-            count = count + 1
+        -- แสดงเฉพาะของที่ verified และใช้งานได้จริง
+        if orb.verified then
+            local displayText = orb.name
+            local searchText = displayText .. orb.orbId .. orb.zone
             
-            local OrbFrame = Instance.new("Frame")
-            OrbFrame.Size = UDim2.new(1, -10, 0, 55)
-            OrbFrame.Position = UDim2.new(0, 5, 0, yPosition)
-            OrbFrame.BackgroundColor3 = orb.verified and Color3.fromRGB(30, 60, 30) or Color3.fromRGB(60, 50, 30)
-            OrbFrame.Parent = ListFrame
-            
-            local OrbCorner = Instance.new("UICorner")
-            OrbCorner.CornerRadius = UDim.new(0, 6)
-            OrbCorner.Parent = OrbFrame
+            if not searchTerm or searchTerm == "" or string.find(string.lower(searchText), string.lower(searchTerm)) then
+                validCount = validCount + 1
+                
+                local OrbFrame = Instance.new("Frame")
+                OrbFrame.Size = UDim2.new(1, -10, 0, 60)
+                OrbFrame.Position = UDim2.new(0, 5, 0, yPosition)
+                OrbFrame.BackgroundColor3 = Color3.fromRGB(30, 60, 40)
+                OrbFrame.Parent = ListFrame
+                
+                local OrbCorner = Instance.new("UICorner")
+                OrbCorner.CornerRadius = UDim.new(0, 8)
+                OrbCorner.Parent = OrbFrame
 
-            local InfoLabel = Instance.new("TextLabel")
-            InfoLabel.Size = UDim2.new(0.7, 0, 0.6, 0)
-            InfoLabel.Position = UDim2.new(0, 8, 0, 5)
-            InfoLabel.Text = displayText
-            InfoLabel.BackgroundTransparency = 1
-            InfoLabel.TextColor3 = Color3.new(1, 1, 1)
-            InfoLabel.Font = Enum.Font.Gotham
-            InfoLabel.TextSize = 11
-            InfoLabel.TextXAlignment = Enum.TextXAlignment.Left
-            InfoLabel.Parent = OrbFrame
-            
-            local IDLabel = Instance.new("TextLabel")
-            IDLabel.Size = UDim2.new(0.7, 0, 0.4, 0)
-            IDLabel.Position = UDim2.new(0, 8, 0.6, 0)
-            IDLabel.Text = string.sub(orb.orbId, 1, 20) .. "..."
-            IDLabel.BackgroundTransparency = 1
-            IDLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-            IDLabel.Font = Enum.Font.Gotham
-            IDLabel.TextSize = 9
-            IDLabel.TextXAlignment = Enum.TextXAlignment.Left
-            IDLabel.Parent = OrbFrame
-            
-            local CollectButton = Instance.new("TextButton")
-            CollectButton.Size = UDim2.new(0.25, 0, 0.6, 0)
-            CollectButton.Position = UDim2.new(0.73, 0, 0.2, 0)
-            CollectButton.Text = orb.verified and "🚀 FIRE" or "❓ TRY"
-            CollectButton.BackgroundColor3 = orb.verified and Color3.fromRGB(0, 150, 0) or Color3.fromRGB(150, 120, 0)
-            CollectButton.TextColor3 = Color3.new(1, 1, 1)
-            CollectButton.Font = Enum.Font.GothamBold
-            CollectButton.TextSize = 10
-            CollectButton.Parent = OrbFrame
-            
-            local ButtonCorner = Instance.new("UICorner")
-            ButtonCorner.CornerRadius = UDim.new(0, 4)
-            ButtonCorner.Parent = CollectButton
-            
-            CollectButton.MouseButton1Click:Connect(function()
-                local remote = findOrbRemote()
-                if remote then
-                    local args = {orb.zone, orb.orbId}
-                    remote:FireServer(unpack(args))
-                    StatusLabel.Text = "Status: 🎯 Fired: " .. orb.name
-                else
-                    StatusLabel.Text = "Status: ❌ No remote found!"
-                end
-            end)
-            
-            yPosition = yPosition + 60
-            ListFrame.CanvasSize = UDim2.new(0, 0, 0, yPosition)
+                local OrbGradient = Instance.new("UIGradient")
+                OrbGradient.Color = ColorSequence.new({
+                    ColorSequenceKeypoint.new(0, Color3.fromRGB(30, 80, 50)),
+                    ColorSequenceKeypoint.new(1, Color3.fromRGB(50, 100, 70))
+                })
+                OrbGradient.Parent = OrbFrame
+
+                local InfoLabel = Instance.new("TextLabel")
+                InfoLabel.Size = UDim2.new(0.7, 0, 0.6, 0)
+                InfoLabel.Position = UDim2.new(0, 10, 0, 5)
+                InfoLabel.Text = "✅ " .. displayText
+                InfoLabel.BackgroundTransparency = 1
+                InfoLabel.TextColor3 = Color3.new(1, 1, 1)
+                InfoLabel.Font = Enum.Font.Gotham
+                InfoLabel.TextSize = 12
+                InfoLabel.TextXAlignment = Enum.TextXAlignment.Left
+                InfoLabel.Parent = OrbFrame
+                
+                local IDLabel = Instance.new("TextLabel")
+                IDLabel.Size = UDim2.new(0.7, 0, 0.4, 0)
+                IDLabel.Position = UDim2.new(0, 10, 0.6, 0)
+                IDLabel.Text = "🎯 " .. string.sub(orb.orbId, 1, 18) .. "..."
+                IDLabel.BackgroundTransparency = 1
+                IDLabel.TextColor3 = Color3.fromRGB(200, 255, 200)
+                IDLabel.Font = Enum.Font.Gotham
+                IDLabel.TextSize = 10
+                IDLabel.TextXAlignment = Enum.TextXAlignment.Left
+                IDLabel.Parent = OrbFrame
+                
+                local CollectButton = Instance.new("TextButton")
+                CollectButton.Size = UDim2.new(0.25, 0, 0.6, 0)
+                CollectButton.Position = UDim2.new(0.73, 0, 0.2, 0)
+                CollectButton.Text = "🚀 FIRE"
+                CollectButton.BackgroundColor3 = Color3.fromRGB(0, 180, 80)
+                CollectButton.TextColor3 = Color3.new(1, 1, 1)
+                CollectButton.Font = Enum.Font.GothamBold
+                CollectButton.TextSize = 11
+                CollectButton.Parent = OrbFrame
+                
+                local ButtonCorner = Instance.new("UICorner")
+                ButtonCorner.CornerRadius = UDim.new(0, 6)
+                ButtonCorner.Parent = CollectButton
+
+                local ButtonGradient = Instance.new("UIGradient")
+                ButtonGradient.Color = ColorSequence.new({
+                    ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 160, 70)),
+                    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 220, 120))
+                })
+                ButtonGradient.Parent = CollectButton
+                
+                CollectButton.MouseButton1Click:Connect(function()
+                    if orb.remote then
+                        local args = {orb.zone, orb.orbId}
+                        if orb.remote:IsA("RemoteEvent") then
+                            orb.remote:FireServer(unpack(args))
+                        else
+                            orb.remote:InvokeServer(unpack(args))
+                        end
+                        StatusLabel.Text = "🎯 Fired: " .. orb.name
+                    end
+                end)
+                
+                yPosition = yPosition + 65
+                ListFrame.CanvasSize = UDim2.new(0, 0, 0, yPosition)
+            end
         end
     end
     
-    if count == 0 then
+    if validCount == 0 then
         local NoResults = Instance.new("TextLabel")
-        NoResults.Size = UDim2.new(1, 0, 0, 50)
+        NoResults.Size = UDim2.new(1, 0, 0, 80)
         NoResults.Position = UDim2.new(0, 0, 0, 10)
-        NoResults.Text = "No items found. Try Deep Scan!"
+        NoResults.Text = "No valid items found.\nClick Deep Scan to find working items!"
         NoResults.BackgroundTransparency = 1
         NoResults.TextColor3 = Color3.fromRGB(150, 150, 150)
         NoResults.Font = Enum.Font.Gotham
-        NoResults.TextSize = 12
+        NoResults.TextSize = 14
+        NoResults.TextYAlignment = Enum.TextYAlignment.Center
         NoResults.Parent = ListFrame
     end
+    
+    StatusLabel.Text = "🟢 Ready - " .. validCount .. " valid items available"
 end
 
 -- Auto Farm
 function startAutoFarm()
     if isAutoCollecting then return end
     
-    local remote = findOrbRemote()
-    if not remote then
-        StatusLabel.Text = "Status: ❌ No remote found!"
+    if #foundOrbs == 0 then
+        StatusLabel.Text = "🔴 No valid items to farm"
         return
     end
     
@@ -603,13 +773,19 @@ function startAutoFarm()
         local cycle = 0
         while isAutoCollecting do
             cycle = cycle + 1
-            StatusLabel.Text = "Status: 🌟 Farming - Cycle " .. cycle
+            StatusLabel.Text = "🌟 Farming - Cycle " .. cycle
             
             for _, orb in pairs(foundOrbs) do
                 if not isAutoCollecting then break end
-                local args = {orb.zone, orb.orbId}
-                remote:FireServer(unpack(args))
-                wait(0.1)
+                if orb.verified and orb.remote then
+                    local args = {orb.zone, orb.orbId}
+                    if orb.remote:IsA("RemoteEvent") then
+                        orb.remote:FireServer(unpack(args))
+                    else
+                        orb.remote:InvokeServer(unpack(args))
+                    end
+                    wait(0.1)
+                end
             end
             wait(0.3)
         end
@@ -620,31 +796,36 @@ function stopAutoFarm()
     isAutoCollecting = false
     AutoFarmButton.Text = "⚡ AUTO FARM"
     AutoFarmButton.BackgroundColor3 = Color3.fromRGB(255, 150, 0)
-    StatusLabel.Text = "Status: Auto farm stopped"
+    StatusLabel.Text = "🟢 Auto farm stopped"
 end
 
 -- Mass Collect
 function massCollectAll()
-    local remote = findOrbRemote()
-    if not remote then
-        StatusLabel.Text = "Status: ❌ No remote found!"
+    if #foundOrbs == 0 then
+        StatusLabel.Text = "🔴 No valid items to collect"
         return
     end
     
     local collected = 0
     for _, orb in pairs(foundOrbs) do
-        local args = {orb.zone, orb.orbId}
-        remote:FireServer(unpack(args))
-        collected = collected + 1
-        StatusLabel.Text = "Status: 💥 Collecting: " .. collected .. "/" .. #foundOrbs
-        wait(0.05)
+        if orb.verified and orb.remote then
+            local args = {orb.zone, orb.orbId}
+            if orb.remote:IsA("RemoteEvent") then
+                orb.remote:FireServer(unpack(args))
+            else
+                orb.remote:InvokeServer(unpack(args))
+            end
+            collected = collected + 1
+            StatusLabel.Text = "💥 Collecting: " .. collected .. "/" .. #foundOrbs
+            wait(0.05)
+        end
     end
-    StatusLabel.Text = "Status: ✅ Collected " .. collected .. " items"
+    StatusLabel.Text = "✅ Collected " .. collected .. " items"
 end
 
 -- โหลดสคริปต์
 function loadInfiniteYield()
-    ToolsStatus.Text = "Loading Infinite Yield..."
+    ToolsStatus.Text = "🟡 Loading Infinite Yield..."
     pcall(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
         ToolsStatus.Text = "✅ Infinite Yield Loaded!"
@@ -652,7 +833,7 @@ function loadInfiniteYield()
 end
 
 function loadDexExplorer()
-    ToolsStatus.Text = "Loading Dex Explorer..."
+    ToolsStatus.Text = "🟡 Loading Dex Explorer..."
     pcall(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/dex.lua'))()
         ToolsStatus.Text = "✅ Dex Explorer Loaded!"
@@ -660,19 +841,36 @@ function loadDexExplorer()
 end
 
 function loadRemoteSpy()
-    ToolsStatus.Text = "Loading Remote Spy..."
+    ToolsStatus.Text = "🟡 Loading Remote Spy..."
     pcall(function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua'))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua'))()
         ToolsStatus.Text = "✅ Remote Spy Loaded!"
     end)
 end
 
 function loadScriptHub()
-    ToolsStatus.Text = "Loading Script Hub..."
+    ToolsStatus.Text = "🟡 Loading Script Hub..."
     pcall(function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/2dgeneralspam1/scripts-and-stuff/master/scripts/Loadstring', true))()
         ToolsStatus.Text = "✅ Script Hub Loaded!"
     end)
+end
+
+-- Minimize Function
+function toggleMinimize()
+    if isMinimized then
+        -- ขยาย
+        MainFrame.Size = UDim2.new(0, 420, 0, 600)
+        ContentArea.Visible = true
+        MinimizeButton.Text = "─"
+        isMinimized = false
+    else
+        -- พับ
+        MainFrame.Size = UDim2.new(0, 420, 0, 60)
+        ContentArea.Visible = false
+        MinimizeButton.Text = "＋"
+        isMinimized = true
+    end
 end
 
 -- Event Handlers
@@ -680,21 +878,23 @@ CloseButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
+MinimizeButton.MouseButton1Click:Connect(toggleMinimize)
+
 MainTab.MouseButton1Click:Connect(function()
     MainContent.Visible = true
     ToolsContent.Visible = false
-    MainTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-    ToolsTab.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+    MainTab.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
+    ToolsTab.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
 end)
 
 ToolsTab.MouseButton1Click:Connect(function()
     MainContent.Visible = false
     ToolsContent.Visible = true
-    MainTab.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-    ToolsTab.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    MainTab.BackgroundColor3 = Color3.fromRGB(70, 70, 90)
+    ToolsTab.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
 end)
 
-ScanButton.MouseButton1Click:Connect(deepScanForOrbs)
+ScanButton.MouseButton1Click:Connect(deepScanAndValidate)
 
 AutoFarmButton.MouseButton1Click:Connect(function()
     if isAutoCollecting then
@@ -716,4 +916,4 @@ RemoteSpyButton.MouseButton1Click:Connect(loadRemoteSpy)
 ScriptHubButton.MouseButton1Click:Connect(loadScriptHub)
 
 -- เริ่มต้น
-StatusLabel.Text = "Status: 🚀 Ready! Click Deep Scan"
+StatusLabel.Text = "🟢 Ready! Click Deep Scan to find working items"
